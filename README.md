@@ -1,69 +1,69 @@
-keymob is an easy-to-use offline advertising management library.
-Keymob is used to  manage  ad advertising platforms of mobile applications, including ad impressions which platforms, the proportion of each platform, and other priorities.
-Support admob, chartboost, inmobi.mmedia, amazon, iad by default,other common advertising platform will been  supported based on  feedback.
-Support rich forms of advertising, including the current popular advertising banner with variety of sizes, rectange ads, Interstitial ads, video ads, more-app ad.
-Config the ad ID , proportion, rate in json format , initialize keymob library. And then  use as a single platform.
-json profile can put in their own web server or third-party management platform server.
-Free choice of storage location and loading configuration files, avoid configuration file failed to load resulting in loss of revenue, but also to avoid third-party management platform, resulting in reduced revenue confusion.
+keymob is an easy-to-use offline advertising management library.<br/>
+Keymob is used to  manage  ad advertising platforms of mobile applications, including ad impressions which platforms, the proportion of each platform, and other priorities.<br/>
+Support admob, chartboost, inmobi.mmedia, amazon, iad by default,other common advertising platform will been  supported based on  feedback.<br/>
+Support rich forms of advertising, including the current popular advertising banner with variety of sizes, rectange ads, Interstitial ads, video ads, more-app ad.<br/>
+Config the ad ID , proportion, rate in json format , initialize keymob library. And then  use as a single platform.<br/>
+json profile can put in their own web server or third-party management platform server.<br/>
+Free choice of storage location and loading configuration files, avoid configuration file failed to load resulting in loss of revenue, but also to avoid third-party management platform, resulting in reduced revenue confusion.<br/>
 
 
 
 Use
 
-1. Download and install the library files
-    Download keymob library keymobad.jar,  add it to the library path of android project
-    Download advertising platform libraries, keymob supports many platforms, but only need to add your own advertising platform library used to android project.
-   The following are the library files of each advertising platform
-   admob： google-play-services.jar
-   amazon:  amazon-ads.jar
-   chartboost: chartboost.jar
-   mmedia：  MMSDK.jar ,nmdp_speech_kit.jar
-   inmobi:  InMobi.jar
-2.Add Code
-  a.add import
+1. Download and install the library files<br/>
+    Download keymob library keymobad.jar,  add it to the library path of android project<br/>
+    Download advertising platform libraries, keymob supports many platforms, but only need to add your own advertising platform library used to android project.<br/>
+   The following are the library files of each advertising platform<br/>
+   admob： google-play-services.jar<br/>
+   amazon:  amazon-ads.jar<br/>
+   chartboost: chartboost.jar<br/>
+   mmedia：  MMSDK.jar ,nmdp_speech_kit.jar<br/>
+   inmobi:  InMobi.jar<br/>
+2.Add Code<br/>
+  a.add import<br/>
 
 	import com.keymob.ads.AdManager;
 	import com.keymob.core.*;
 
-    Before using keymob, first import keymob related class files. Most of the core classes in com.keymob.core package, so you can import all at once. AdManager as the main class of keymob , also need to be imported.
+    Before using keymob, first import keymob related class files. Most of the core classes in com.keymob.core package, so you can import all at once. AdManager as the main class of keymob , also need to be imported.<br/>
   
  b.Setup and initialize keymob
 
 	AdManager.getInstance().initFromJSON(active,jsonString,new  AdEventListener());
 
-   The first parameter  is context active, it as necessary, and can not be null.
-  The second parameter is the config info of each platform in json string format,json format reference template.
-  The third parameter is   event listener of advertising,witch is a class that implements interface IAdEventListener, if you do not want to deal with advertising events, you can set it to null.
+   The first parameter  is context active, it as necessary, and can not be null.<br/>
+  The second parameter is the config info of each platform in json string format,json format reference template.<br/>
+  The third parameter is   event listener of advertising,witch is a class that implements interface IAdEventListener, if you do not want to deal with advertising events, you can set it to null.<br/>
 
  c. Display banner advertising
 
 	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,80);
 
-    The above means that displays the standard banner ad at the bottom of the device . The first parameter is the ad size, the type size can be selected in BannerSizes constants, including the standard banner, rectange banner, smart banner and so on.
-  Other banner size outside  standard size(320*50) may have  small differences in the different platforms, run to see the effects.
-  The second parameter is the position of the banner displayed,  the value of each position is  in BannerPositions constants,including the top left, top center, top right-hand and so on ,9 kinds of common position total.
-  The third parameter is offsetY, i.e., the relative positional deviation, e.g., on the bottom of the application, the upward offset 80 pixels, that is, the effect of the above code. If you want to stick to the bottom of the application, set the offsetY 0.
+    The above means that displays the standard banner ad at the bottom of the device . The first parameter is the ad size, the type size can be selected in BannerSizes constants, including the standard banner, rectange banner, smart banner and so on.<br/>
+  Other banner size outside  standard size(320*50) may have  small differences in the different platforms, run to see the effects.<br/>
+  The second parameter is the position of the banner displayed,  the value of each position is  in BannerPositions constants,including the top left, top center, top right-hand and so on ,9 kinds of common position total.<br/>
+  The third parameter is offsetY, i.e., the relative positional deviation, e.g., on the bottom of the application, the upward offset 80 pixels, that is, the effect of the above code. If you want to stick to the bottom of the application, set the offsetY 0.<br/>
  
  d. display banner at Fixed location
 	
 	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200);
 
-    The above code is display standard banner at point(0,200)
-     Although the relative positioning to meet the needs of the majority of advertising location settings, but to meet the needs of some special position, keymob provides absolute fixed position display banner advertising api.
-     The first parameter is the size of the banner, the second argument and third parameters are the position x and y values of banner.
+    The above code is display standard banner at point(0,200)<br/>
+     Although the relative positioning to meet the needs of the majority of advertising location settings, but to meet the needs of some special position, keymob provides absolute fixed position display banner advertising api.<br/>
+     The first parameter is the size of the banner, the second argument and third parameters are the position x and y values of banner.<br/>
 
  e. Hide banne ad
 	
 	AdManager.getInstance().removeBanner();
 
-   "removeBanner" hidden banner advertising, but advertising will not be destroyed so show can be quickly presented to the user next time. Some advertising platform will continue to  load ad after hidden , so the event will dispatched also.
+   "removeBanner" hidden banner advertising, but advertising will not be destroyed so show can be quickly presented to the user next time. Some advertising platform will continue to  load ad after hidden , so the event will dispatched also.<br/>
     
  f. Load and display full-screen ads
 
 	AdManager.getInstance().loadInterstitial();
 
-   Load Interstitial ads, does not automatically show after load successfully, this can better control Interstitial ad at the right time to show to the user,
-    If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showInterstitial.
+   Load Interstitial ads, does not automatically show after load successfully, this can better control Interstitial ad at the right time to show to the user,<br/>
+    If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showInterstitial.<br/>
 
 	AdManager.getInstance().showInterstitial();
 
@@ -71,7 +71,7 @@ Use
 
 	AdManager.getInstance().isInterstitialReady();
 
-   Check the Interstitial ad is loaded complete. If call showInterstitial directly when an ad  has not finished loading unpredictable events will occur, som advertising platform could lead to crash.
+   Check the Interstitial ad is loaded complete. If call showInterstitial directly when an ad  has not finished loading unpredictable events will occur, som advertising platform could lead to crash.<br/>
     So make sure the Interstitial is ready before every show.Below is the overall look.
 
    	if(AdManager.getInstance().isInterstitialReady()){
@@ -82,7 +82,7 @@ g. Load and display video ads
 
 	AdManager.getInstance().loadVideo();
 
-  Load video ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,
+  Load video ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showVideo.
 
 	AdManager.getInstance().showVideo();
@@ -91,7 +91,7 @@ g. Load and display video ads
 
 	AdManager.getInstance().isVideoReady();
 
-  Check the video ad is loaded complete. If call showVideo directly when an ad  has not finished loading unpredictable events will occur, some advertising platform could lead to crash.
+  Check the video ad is loaded complete. If call showVideo directly when an ad  has not finished loading unpredictable events will occur, some advertising platform could lead to crash.<br/>
     So make sure the video is ready before every show.Below is the overall look.
 
    	if(AdManager.getInstance().isVideoReady()){
@@ -102,8 +102,8 @@ h. Application load and display more app advertising
 
 	AdManager.getInstance().loadAppWall();
 
-   Load more app ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,
-    If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showAppWall.
+   Load more app ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,<br/>
+    If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showAppWall.<br/>
 
 	AdManager.getInstance().showAppWall();
 
@@ -111,8 +111,8 @@ h. Application load and display more app advertising
 
 	AdManager.getInstance().isAppWallReady();
 
-   Check the More App ad is loaded complete. If call showAppWall directly when an ad  has not finished loading unpredictable events will occur, some advertising platform could lead to crash.
-    So make sure the More App is ready before every show.Below is the overall look.
+   Check the More App ad is loaded complete. If call showAppWall directly when an ad  has not finished loading unpredictable events will occur, some advertising platform could lead to crash.<br/>
+    So make sure the More App is ready before every show.Below is the overall look.<br/>
 
    	if(AdManager.getInstance().isAppWallReady()){
 		AdManager.getInstance().showAppWall();
@@ -122,6 +122,7 @@ h. Application load and display more app advertising
 
   a.Configuring Permissions
 
+```
 	<!-- base permission -->
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -136,12 +137,15 @@ h. Application load and display more app advertising
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 	<uses-feature android:name="android.hardware.microphone" android:required="false" />
 
-  The above are permissions advertising platform needs, basic permissions are required by all advertising platform, location is required by some platforms, in order to save the sake , both blocks can be added to this configuration.
-   WRITE_EXTERNAL_STORAGE  permission is required by chartboost, if added chartboost, you need to add this permission.
-   The audio and microphone permissions are required by  mmedia, if used mmedia platform,  add it to configuration
+```
+  The above are permissions advertising platform needs, basic permissions are required by all advertising platform, location is required by some platforms, in order to save the sake , both blocks can be added to this configuration.<br/>
+   WRITE_EXTERNAL_STORAGE  permission is required by chartboost, if added chartboost, you need to add this permission.<br/>
+   The audio and microphone permissions are required by  mmedia, if used mmedia platform,  add it to configuration<br/>
 
 
   b.Config platform  services and activity
+
+```
 
 	<!-- Admob Mobile Ads -->
 	<meta-data android:name="com.google.android.gms.version" android:value="6587000" />
@@ -153,9 +157,13 @@ h. Application load and display more app advertising
 	<!-- Millennial Media -->
 	<activity android:name="com.millennialmedia.android.MMActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|keyboard|screenSize" />
 
-  The service and activity required by advertising platform must been add to configuration,add the corresponding activity and services in  androidmanifest.xml.
+```
+  The service and activity required by advertising platform must been add to configuration,add the corresponding activity and services in  androidmanifest.xml.<br/>
+
 
 4.Advertising platform configuration file template
+
+```
 	{
 		"isTesting":true,//Whether it is in test mode
 		"rateModel":1,//0 said rate is  represents the weight of each platform ,1 said the rate is the order of each platform to display ads
@@ -168,8 +176,8 @@ h. Application load and display more app advertising
 		{"adapter":"MMediaAdapter","rate":50,"key1":"xxx","key2":"xxx","types":[0,1]}//mmedia ,key1 banner apID，key2 Interstitial apid
 		]
 	}
-
-Depending rate model rate will become the sort number or proportion.All keyName in config can not been modified."adapter" can not be modified and "types" can not be modified. "adapter", said platform implement, types indicates that the platform supports the type of ad.
-Using the platform of you  choice, delete unused platform. You can also add your own platforms, then config in the list. Create your own advertising platform extensions tutorials will gradually improve later.
+```
+Depending rate model rate will become the sort number or proportion.All keyName in config can not been modified."adapter" can not be modified and "types" can not be modified. "adapter", said platform implement, types indicates that the platform supports the type of ad.<br/>
+Using the platform of you  choice, delete unused platform. You can also add your own platforms, then config in the list. Create your own advertising platform extensions tutorials will gradually improve later.<br/>
 
 project home：https://github.com/keymobdev/Ad-Network-Mediation-lib-for-android
