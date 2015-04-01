@@ -1,4 +1,4 @@
-keymob is an easy-to-use offline advertising management library.<br/>
+# keymob is an easy-to-use offline advertising management library.<br/>
 Keymob is used to  manage  ad advertising platforms of mobile applications, including ad impressions which platforms, the proportion of each platform, and other priorities.<br/>
 Support admob, chartboost, inmobi.mmedia, amazon, iad by default,other common advertising platform will been  supported based on  feedback.<br/>
 Support rich forms of advertising, including the current popular advertising banner with variety of sizes, rectange ads, Interstitial ads, video ads, more-app ad.<br/>
@@ -8,119 +8,119 @@ Free choice of storage location and loading configuration files, avoid configura
 
 
 
-Use
+## Usage
 
-1. Download and install the library files<br/>
-    Download keymob library keymobad.jar,  add it to the library path of android project<br/>
-    Download advertising platform libraries, keymob supports many platforms, but only need to add your own advertising platform library used to android project.<br/>
+### 1. Download and install the library files<br/>
+  Download keymob library keymobad.jar,  add it to the library path of android project<br/>
+  Download advertising platform libraries, keymob supports many platforms, but only need to add your own advertising platform library used to android project.<br/>
    The following are the library files of each advertising platform<br/>
    admob： google-play-services.jar<br/>
    amazon:  amazon-ads.jar<br/>
    chartboost: chartboost.jar<br/>
    mmedia：  MMSDK.jar ,nmdp_speech_kit.jar<br/>
    inmobi:  InMobi.jar<br/>
-2.Add Code<br/>
-  a.add import<br/>
-
+###  2.Add Code<br/>
+  #### a.add import<br/>
+```
 	import com.keymob.ads.AdManager;
 	import com.keymob.core.*;
-
+```
     Before using keymob, first import keymob related class files. Most of the core classes in com.keymob.core package, so you can import all at once. AdManager as the main class of keymob , also need to be imported.<br/>
   
- b.Setup and initialize keymob
-
+ #### b.Setup and initialize keymob
+```
 	AdManager.getInstance().initFromJSON(active,jsonString,new  AdEventListener());
-
+```
    The first parameter  is context active, it as necessary, and can not be null.<br/>
   The second parameter is the config info of each platform in json string format,json format reference template.<br/>
   The third parameter is   event listener of advertising,witch is a class that implements interface IAdEventListener, if you do not want to deal with advertising events, you can set it to null.<br/>
 
- c. Display banner advertising
-
+ #### c. Display banner advertising
+```
 	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,80);
-
+```
     The above means that displays the standard banner ad at the bottom of the device . The first parameter is the ad size, the type size can be selected in BannerSizes constants, including the standard banner, rectange banner, smart banner and so on.<br/>
   Other banner size outside  standard size(320*50) may have  small differences in the different platforms, run to see the effects.<br/>
   The second parameter is the position of the banner displayed,  the value of each position is  in BannerPositions constants,including the top left, top center, top right-hand and so on ,9 kinds of common position total.<br/>
   The third parameter is offsetY, i.e., the relative positional deviation, e.g., on the bottom of the application, the upward offset 80 pixels, that is, the effect of the above code. If you want to stick to the bottom of the application, set the offsetY 0.<br/>
  
- d. display banner at Fixed location
-	
+ #### d. display banner at Fixed location
+```	
 	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200);
-
+```
     The above code is display standard banner at point(0,200)<br/>
      Although the relative positioning to meet the needs of the majority of advertising location settings, but to meet the needs of some special position, keymob provides absolute fixed position display banner advertising api.<br/>
      The first parameter is the size of the banner, the second argument and third parameters are the position x and y values of banner.<br/>
 
- e. Hide banne ad
-	
+ #### e. Hide banne ad
+```	
 	AdManager.getInstance().removeBanner();
-
+```
    "removeBanner" hidden banner advertising, but advertising will not be destroyed so show can be quickly presented to the user next time. Some advertising platform will continue to  load ad after hidden , so the event will dispatched also.<br/>
     
- f. Load and display full-screen ads
-
+ #### f. Load and display full-screen ads
+```
 	AdManager.getInstance().loadInterstitial();
-
+```
    Load Interstitial ads, does not automatically show after load successfully, this can better control Interstitial ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showInterstitial.<br/>
-
+```
 	AdManager.getInstance().showInterstitial();
-
+```
    Display Interstitial advertising, ads will appear immediately after the call showInterstitial. However, please ensure that advertising has finished loading.
 
 	AdManager.getInstance().isInterstitialReady();
 
    Check the Interstitial ad is loaded complete. If call showInterstitial directly when an ad  has not finished loading unpredictable events will occur, som advertising platform could lead to crash.<br/>
     So make sure the Interstitial is ready before every show.Below is the overall look.
-
+```
    	if(AdManager.getInstance().isInterstitialReady()){
 		AdManager.getInstance().showInterstitial();
 	}
-
-g. Load and display video ads
-
+```
+#### g. Load and display video ads
+```
 	AdManager.getInstance().loadVideo();
-
+```
   Load video ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showVideo.
-
+```
 	AdManager.getInstance().showVideo();
-
+```
    Display video ads, ads will appear immediately after the call showVideo. However, please ensure that advertising has finished loading.
-
+```
 	AdManager.getInstance().isVideoReady();
-
+```
   Check the video ad is loaded complete. If call showVideo directly when an ad  has not finished loading unpredictable events will occur, some advertising platform could lead to crash.<br/>
     So make sure the video is ready before every show.Below is the overall look.
-
+```
    	if(AdManager.getInstance().isVideoReady()){
 		AdManager.getInstance().showVideo();
 	}
-
-h. Application load and display more app advertising
-
+```
+#### h. Application load and display more app advertising
+```
 	AdManager.getInstance().loadAppWall();
-
+```
    Load more app ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showAppWall.<br/>
-
+```
 	AdManager.getInstance().showAppWall();
-
+```
    Display more app ads, ads will appear immediately after the call showAppWall. However, please ensure that advertising has finished loading.
-
+```
 	AdManager.getInstance().isAppWallReady();
-
+```
    Check the More App ad is loaded complete. If call showAppWall directly when an ad  has not finished loading unpredictable events will occur, some advertising platform could lead to crash.<br/>
     So make sure the More App is ready before every show.Below is the overall look.<br/>
-
+```
    	if(AdManager.getInstance().isAppWallReady()){
 		AdManager.getInstance().showAppWall();
 	}
+```
+### 3.Setting Profiles
 
-3.Setting Profiles
-
-  a.Configuring Permissions
+  #### a.Configuring Permissions
 
 ```
 	<!-- base permission -->
@@ -143,10 +143,8 @@ h. Application load and display more app advertising
    The audio and microphone permissions are required by  mmedia, if used mmedia platform,  add it to configuration<br/>
 
 
-  b.Config platform  services and activity
-
+  #### b.Config platform  services and activity
 ```
-
 	<!-- Admob Mobile Ads -->
 	<meta-data android:name="com.google.android.gms.version" android:value="6587000" />
 	<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent"/>
@@ -161,7 +159,7 @@ h. Application load and display more app advertising
   The service and activity required by advertising platform must been add to configuration,add the corresponding activity and services in  androidmanifest.xml.<br/>
 
 
-4.Advertising platform configuration file template
+### 4.Advertising platform configuration file template
 
 ```
 	{
