@@ -20,14 +20,14 @@ Free choice of storage location and loading configuration files, avoid configura
    mmedia：  MMSDK.jar ,nmdp_speech_kit.jar<br/>
    inmobi:  InMobi.jar<br/>
 ###  2.Add Code<br/>
-  #### a.add import<br/>
+#### a.add import<br/>
 ```
 	import com.keymob.ads.AdManager;
 	import com.keymob.core.*;
 ```
     Before using keymob, first import keymob related class files. Most of the core classes in com.keymob.core package, so you can import all at once. AdManager as the main class of keymob , also need to be imported.<br/>
   
- #### b.Setup and initialize keymob
+#### b.Setup and initialize keymob
 ```
 	AdManager.getInstance().initFromJSON(active,jsonString,new  AdEventListener());
 ```
@@ -35,7 +35,7 @@ Free choice of storage location and loading configuration files, avoid configura
   The second parameter is the config info of each platform in json string format,json format reference template.<br/>
   The third parameter is   event listener of advertising,witch is a class that implements interface IAdEventListener, if you do not want to deal with advertising events, you can set it to null.<br/>
 
- #### c. Display banner advertising
+#### c. Display banner advertising
 ```
 	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,80);
 ```
@@ -44,7 +44,7 @@ Free choice of storage location and loading configuration files, avoid configura
   The second parameter is the position of the banner displayed,  the value of each position is  in BannerPositions constants,including the top left, top center, top right-hand and so on ,9 kinds of common position total.<br/>
   The third parameter is offsetY, i.e., the relative positional deviation, e.g., on the bottom of the application, the upward offset 80 pixels, that is, the effect of the above code. If you want to stick to the bottom of the application, set the offsetY 0.<br/>
  
- #### d. display banner at Fixed location
+#### d. display banner at Fixed location
 ```	
 	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200);
 ```
@@ -52,13 +52,13 @@ Free choice of storage location and loading configuration files, avoid configura
      Although the relative positioning to meet the needs of the majority of advertising location settings, but to meet the needs of some special position, keymob provides absolute fixed position display banner advertising api.<br/>
      The first parameter is the size of the banner, the second argument and third parameters are the position x and y values of banner.<br/>
 
- #### e. Hide banne ad
+#### e. Hide banne ad
 ```	
 	AdManager.getInstance().removeBanner();
 ```
    "removeBanner" hidden banner advertising, but advertising will not be destroyed so show can be quickly presented to the user next time. Some advertising platform will continue to  load ad after hidden , so the event will dispatched also.<br/>
     
- #### f. Load and display full-screen ads
+#### f. Load and display full-screen ads
 ```
 	AdManager.getInstance().loadInterstitial();
 ```
@@ -120,7 +120,7 @@ Free choice of storage location and loading configuration files, avoid configura
 ```
 ### 3.Setting Profiles
 
-  #### a.Configuring Permissions
+#### a.Configuring Permissions
 
 ```
 	<!-- base permission -->
@@ -143,7 +143,7 @@ Free choice of storage location and loading configuration files, avoid configura
    The audio and microphone permissions are required by  mmedia, if used mmedia platform,  add it to configuration<br/>
 
 
-  #### b.Config platform  services and activity
+#### b.Config platform  services and activity
 ```
 	<!-- Admob Mobile Ads -->
 	<meta-data android:name="com.google.android.gms.version" android:value="6587000" />
