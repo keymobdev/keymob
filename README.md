@@ -25,7 +25,7 @@ Free choice of storage location and loading configuration files, avoid configura
 	import com.keymob.ads.AdManager;
 	import com.keymob.core.*;
 ```
-    Before using keymob, first import keymob related class files. Most of the core classes in com.keymob.core package, so you can import all at once. AdManager as the main class of keymob , also need to be imported.<br/>
+Before using keymob, first import keymob related class files. Most of the core classes in com.keymob.core package, so you can import all at once. AdManager as the main class of keymob , also need to be imported.<br/>
   
 #### b.Setup and initialize keymob
 ```
@@ -39,7 +39,7 @@ Free choice of storage location and loading configuration files, avoid configura
 ```
 	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,80);
 ```
-    The above means that displays the standard banner ad at the bottom of the device . The first parameter is the ad size, the type size can be selected in BannerSizes constants, including the standard banner, rectange banner, smart banner and so on.<br/>
+The above means that displays the standard banner ad at the bottom of the device . The first parameter is the ad size, the type size can be selected in BannerSizes constants, including the standard banner, rectange banner, smart banner and so on.<br/>
   Other banner size outside  standard size(320*50) may have  small differences in the different platforms, run to see the effects.<br/>
   The second parameter is the position of the banner displayed,  the value of each position is  in BannerPositions constants,including the top left, top center, top right-hand and so on ,9 kinds of common position total.<br/>
   The third parameter is offsetY, i.e., the relative positional deviation, e.g., on the bottom of the application, the upward offset 80 pixels, that is, the effect of the above code. If you want to stick to the bottom of the application, set the offsetY 0.<br/>
@@ -48,7 +48,7 @@ Free choice of storage location and loading configuration files, avoid configura
 ```	
 	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200);
 ```
-    The above code is display standard banner at point(0,200)<br/>
+The above code is display standard banner at point(0,200)<br/>
      Although the relative positioning to meet the needs of the majority of advertising location settings, but to meet the needs of some special position, keymob provides absolute fixed position display banner advertising api.<br/>
      The first parameter is the size of the banner, the second argument and third parameters are the position x and y values of banner.<br/>
 
