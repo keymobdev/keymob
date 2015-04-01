@@ -19,7 +19,7 @@ Free choice of storage location and loading configuration files, avoid configura
    chartboost: chartboost.jar<br/>
    mmedia：  MMSDK.jar ,nmdp_speech_kit.jar<br/>
    inmobi:  InMobi.jar<br/>
-###  2.Add Code<br/>
+###  2.Add Code
 #### a.add import<br/>
 ```
 	import com.keymob.ads.AdManager;
