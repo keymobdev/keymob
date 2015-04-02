@@ -1,4 +1,4 @@
-# keymob is an easy-to-use offline advertising management library.<br/>
+# keymob is an easy-to-use offline advertising management library
 Keymob is used to  manage  ad advertising platforms of mobile applications, including ad impressions which platforms, the proportion of each platform, and other priorities.<br/>
 Support admob, chartboost, inmobi.mmedia, amazon, iad by default,other common advertising platform will been  supported based on  feedback.<br/>
 Support rich forms of advertising, including the current popular advertising banner with variety of sizes, rectange ads, Interstitial ads, video ads, more-app ad.<br/>
@@ -14,12 +14,14 @@ Free choice of storage location and loading configuration files, avoid configura
   Download keymob library keymobad.jar,  add it to the library path of android project<br/>
   Download advertising platform libraries, keymob supports many platforms, but only need to add your own advertising platform library used to android project.<br/>
    The following are the library files of each advertising platform<br/>
-   admob： google-play-services.jar<br/>
-   amazon:  amazon-ads.jar<br/>
-   chartboost: chartboost.jar<br/>
-   mmedia：  MMSDK.jar ,nmdp_speech_kit.jar<br/>
-   inmobi:  InMobi.jar<br/>
+   * admob： google-play-services.jar<br/>
+   * amazon:  amazon-ads.jar<br/>
+   * chartboost: chartboost.jar<br/>
+   * mmedia：  MMSDK.jar ,nmdp_speech_kit.jar<br/>
+   * inmobi:  InMobi.jar<br/>
+
 ###  2.Add Code
+
 #### a.add import<br/>
 ```
 	import com.keymob.ads.AdManager;
@@ -179,3 +181,4 @@ Depending rate model rate will become the sort number or proportion.All keyName 
 Using the platform of you  choice, delete unused platform. You can also add your own platforms, then config in the list. Create your own advertising platform extensions tutorials will gradually improve later.<br/>
 
 project home：https://github.com/keymobdev/Ad-Network-Mediation-lib-for-android
+ios project: https://github.com/keymobdev/Keymob-Ad-Lib-for-IOS
