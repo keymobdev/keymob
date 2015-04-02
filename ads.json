@@ -1,0 +1,12 @@
+{
+"isTesting":true,
+"rateModel":1,
+"platforms":[
+{"adapter":"AdmobAdapter","rate":6,"key1":"banner id","key2":"full screen ad id","types":[0,1]},
+{"adapter":"AmazonAdapter","rate":2,"key1":"apid","types":[0,1]},
+{"adapter":"ChartboostAdapter","rate":3,"key1":"appid","key2":"sign","types":[1,2,3]},
+{"adapter":"InmobiAdapter","rate":4,"key1":"appid","types":[0,1]},
+{"adapter":"MMediaAdapter","rate":50,"key1":"banner id","key2":"full screen ad id","types":[0,1]},
+{"adapter":"IadAdapter","rate":1,"types":[0,1]}
+]
+}
