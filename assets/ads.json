@@ -1,0 +1,14 @@
+{
+"isTesting":true,
+"rateModel":1,
+"platforms":[
+{"class":"KeymobAdapter","priority":50,"key1":"1"},
+{"class":"AdmobAdapter","priority":50,"key1":"ca-app-pub-9310304686094680/1984805253","key2":"ca-app-pub-9310304686094680/1984805253"},
+{"class":"AmazonAdapter","priority":50,"key1":"7e5039cf4938421c8b5792f598e5ff9f"},
+{"class":"ChartboostAdapter","priority":50,"key1":"51bdcf7616ba475450000005","key2":"28c18ae143999b71468de4a7b50eff51ce83fac0"},
+{"class":"InmobiAdapter","priority":50,"key1":"339bf9c07e094fdfa2a227daeb075e83"},
+{"class":"IadAdapter","priority":50,"key1":"98877673"},
+{"class":"BaiduAdapter","priority":50,"key1":"aee6acc9"},
+{"class":"MMediaAdapter","priority":50,"key1":"194743","key2":"194745"}
+]
+}

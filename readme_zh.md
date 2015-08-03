@@ -1,6 +1,6 @@
-keymob 是一个简单易用的离线广告管理库。
+keymob 是一个简单易用的广告管理库。
 使用keymob能非常方便的管理应用中各个广告平台的广告，包括展示哪些平台的广告，各个平台的比例，优先顺序等。
-支持admob,chartboost,inmobi.mmedia,amazon,iad等常用广告平台，后面会根据大家的反馈加入更多的常见平台的支持。
+支持admob,chartboost,inmobi.mmedia,amazon,iad,baidu等常用广告平台，后面会根据大家的反馈加入更多的常见平台的支持。
 广告形式支持丰富，包括各种尺寸的banner广告，方块广告，全屏广告，视频广告，应用墙广告等当前流行的广告。
 使用时把各个平台的广告ID和比例优先级顺序等信息按json格式配置，初始化keymob库 ，后面的使用就和使用单个平台一样的简单。
 json配置文件可以放项目里，自己的网站服务器或者第三方管理平台服务器。
@@ -13,37 +13,51 @@ json配置文件可以放项目里，自己的网站服务器或者第三方管�
 
 1.下载安装库文件
    下载keymob库文件keymobad.jar,把keymobad.jar添加到android项目的库路径中
-   下载广告平台库，keymob支持众多平台，但是只需要添加自己使用的广告平台的库到android工程中就行了。
-   如下是各个广告平台对应的库文件
-   admob平台： google-play-services.jar
-   amazon平台:  amazon-ads.jar
-   chartboost平台: chartboost.jar
-   mmedia平台：  MMSDK.jar ,nmdp_speech_kit.jar
-   inmobi平台:  InMobi.jar
+   下载广告平台插件，keymob支持众多平台，但是只需要添加一个默认的广告平台的插件，把插件放置在android工程中assets/com_keymob_sdks目录中。
+   如下是各个广告平台对应的插件文件
+   admob平台：AdmobAdapter.jar
+   amazon平台:  AmazonAdapter.jar
+   chartboost平台: ChartboostAdapter.jar
+   mmedia平台：  MMediaAdapter.jar
+   inmobi平台:  InmobiAdapter.jar
+   baidu平台:  BaiduAdapter.jar
+   注意：插件的文件名称不能修改变动
 2.添加 代码
-  a.添加引用
+  a.引入代码
 
 	import com.keymob.ads.AdManager;
 	import com.keymob.core.*;
+	import com.keymob.sdk.core.AdTypes;
 
     使用keymob前，先import keymob的相关类文件。keymob的大部分核心类在com.keymob.core包中，所以可以一次全部引入。AdManager作为keymob的主要类，也是必须引入的。
   
- b.设置和初始化各个广告平台信息
+ b.通过json配置文件设置和初始化各个广告平台信息
 
 	AdManager.getInstance().initFromJSON(active,jsonString,new  AdEventListener());
 
    active是广告展示的上下文，所以是必须的，并且不能为null。
-   第二个参数是包含各个平台的ID，比重等信息的json字符串，具体格式可以参考模板文件。
+   第二个参数是包含各个平台的ID，比重等信息的json字符串，具体格式可以参考模板文件，不能为空。
    第三个参数是广告事件监听器，监听器是实现接口IAdEventListener的类，如果不需要处理和监听广告事件，则可以设置为null
 
- c. banner广告的展示 
+   c.通过Keymob.com网站服务设置和初始化各个广告平台信息
 
-	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,80);
+	AdManager.getInstance().initFromKeymobService(this, "1", new AdEventListener(), false);
+
+   active是广告展示的上下文，所以是必须的，并且不能为null。
+   第二个参数是Keymob.com网站创建获取到的应用ID
+   第三个参数是广告事件监听器，监听器是实现接口IAdEventListener的类，如果不需要处理和监听广告事件，则可以设置为null
+   第四个参数是是否是测试，如果在开发中，设置true，最后发布的时候改成false
+
+   注意：使用此方法需先前往www.keymob.com创建应用，配置广告平台信息
+
+ d. banner广告的展示 
+
+	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,0);
 
     上面的意思是在设备的底部显示显示标准banner广告。第一个参数是广告尺寸，尺寸的种类在BannerSizes中可以选择的常量，包括标准banner，方块，smart banner等。
     标准banner之外的其他banner尺寸根据平台不同有细微的差别，具体效果可以调试查看。
     第二个参数是广告条展示的位置，包括顶端靠左，顶端居中，顶端靠右等等9种常见位置，各个位置的值在BannerPositions的常量中，方便使用。
-    第三个参数是offsetY，即相对位置偏移，例如放在应用的底端，向上偏移80个像素，就是上面的代码效果。如果要贴到应用最底端，则偏移为0.
+    第三个参数是offsetY，即相对位置偏移，例如放在应用的底端，向上偏移0个像素，就是上面的代码效果。如果要贴到应用最底端上移60，则偏移为60.
  
  d. 固定位置展示banner
 	
@@ -131,21 +145,21 @@ h. 应用墙广告的加载和展示
 	<!-- base permission for location-->
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />			    
-	<!-- base permission  required by chartboost-->
+	<!-- base permission  required by chartboost and baidu-->
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 	<!-- permission required by mmedia -->
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 	<uses-feature android:name="android.hardware.microphone" android:required="false" />
 
   上面是广告需要的权限，基础权限是对任何广告平台都要的，location是某些平台需要，为了省事起见，可以把这俩块都加进配置中。
-  WRITE_EXTERNAL_STORAGE为chartboost所需要的权限，如果加了chartboost，则需要添加此权限。
+  WRITE_EXTERNAL_STORAGE为chartboost,baidu所需要的权限，如果加了chartboost，baidu则需要添加此权限。
   后面的audio和microphone是mmedia要求的权限，如果使用了mmedia平台，需要添加
 
 
   b.配置平台相关activity和service
 
 	<!-- Admob Mobile Ads -->
-	<meta-data android:name="com.google.android.gms.version" android:value="6587000" />
+	<meta-data android:name="com.google.android.gms.version" android:value="7327000" />
 	<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent"/>
 	<!-- Amazon Mobile Ads -->
 	<activity android:name="com.amazon.device.ads.AdActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
@@ -153,24 +167,30 @@ h. 应用墙广告的加载和展示
 	<activity android:name="com.inmobi.androidsdk.IMBrowserActivity" android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:hardwareAccelerated="true" />
 	<!-- Millennial Media -->
 	<activity android:name="com.millennialmedia.android.MMActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation|keyboard|screenSize" />
+	<!-- Keymob -->      
+        <activity android:name="com.keymob.sdk.core.KeymobActivity"   android:theme="@android:style/Theme.Dialog" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"  />
+	<!-- baidu -->     
+	<activity android:name="com.baidu.mobads.AppActivity" android:configChanges="keyboard|keyboardHidden|orientation"/> 
 
   上面是各个广告平台要求配置的activity，根据自己选择使用的广告平台，添加对应的activity配置到androidmanifest.xml中。
 
 4.广告平台配置文件模板
 	{
 		"isTesting":true,//是否是测试模式
-		"rateModel":1,//广告平台排序规则，0表示rate是权重，各个平台按比例显示广告，1表示rate是顺序，各个平台按顺序展示广告
+		"rateModel":1,//广告平台排序规则，0表示priority是权重，各个平台按比例显示广告，1表示priority是顺序，各个平台按顺序展示广告
 		"platforms":[
-		{"adapter":"AdmobAdapter","rate":90,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx","types":[0,1]},//admob 平台 ,key1 banner ID，key2全屏id
-		{"adapter":"AmazonAdapter","rate":20,"key1":"xxx","types":[0,1]},//amazon 平台 ,key1 appkey
-		{"adapter":"ChartboostAdapter","rate":40,"key1":"xxx","key2":"xxx","types":[1,2,3]},//chartboost 平台 ,key1 appID，key2 signature
-		{"adapter":"InmobiAdapter","rate":50,"key1":"xxx","types":[0,1]},//inmobi 平台 ,key1 appid 
-		{"adapter":"IadAdapter","rate":50,"types":[0,1]},//iad 平台 ,android上会被自动忽略
-		{"adapter":"MMediaAdapter","rate":10,"key1":"xxx","key2":"xxx","types":[0,1]}//mmedia 平台 ,key1 banner ID，key2全屏id
+		{"class":"AdmobAdapter","priority":90,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob 平台 ,key1 banner ID，key2全屏id
+		{"class":"AmazonAdapter","priority":20,"key1":"xxx"},//amazon 平台 ,key1 appkey
+		{"class":"ChartboostAdapter","priority":40,"key1":"xxx","key2":"xxx"},//chartboost 平台 ,key1 appID，key2 signature
+		{"class":"InmobiAdapter","priority":50,"key1":"xxx"},//inmobi 平台 ,key1 appid 
+		{"class":"IadAdapter","priority":50,"key1":"877393773"},//iad 平台 ,android上会被自动忽略
+		{"class":"KeymobAdapter","priority":50,"key1":"appid"},//keymob.com 自售广告，交叉推广需要
+		{"class":"BaiduAdapter","priority":50,"key1":"appsid","key2":"appsec"},//baidu 平台 
+		{"class":"MMediaAdapter","priority":10,"key1":"xxx","key2":"xxx"}//mmedia 平台 ,key1 banner ID，key2全屏id
 		]
 	}
 
-rate会根据ratemodel不同而成为比重或者排序号,adapter不能修改和types的值不能修改。adapter表示平台实现，types表示本平台支持的广告类型。
-根据自己的选择使用平台，可以删除不用的平台。也可以自己实现其他的平台，然后添加到列表中。创建自己的广告平台扩展教程将会在后面逐渐完善。
+priority会根据ratemodel不同而成为比重或者排序号。class表示平台实现
+根据自己的选择使用平台，可以删除不用的平台配置。也可以自己实现其他的平台，然后添加到列表中。创建自己的广告平台扩展教程将会在后面逐渐完善。
 
 项目地址：https://github.com/keymobdev/Ad-Network-Mediation-lib-for-android
