@@ -20,7 +20,8 @@ Free choice of storage location and loading configuration files, avoid configura
    * mmedia：  MMediaAdapter.jar
    * inmobi:  InmobiAdapter.jar
    * baidu:  BaiduAdapter.jar
-   warning：just need add one platform lib to assets/com_keymob_sdks  .
+
+<br/>   warning：just need add one platform lib to assets/com_keymob_sdks  .
 
 ###  2.Add Code
 
@@ -185,17 +186,17 @@ The above code is display standard banner at point(0,200)<br/>
 		"isTesting":true,//Whether it is in test mode
 		"rateModel":1,//0 said priority is  represents the weight of each platform ,1 said the priority is the order of each platform to display ads
 		"platforms":[
-		{"class":"AdmobAdapter","priority":90,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob  ,key1 banner ID，key2 Interstitial id
-		{"class":"AmazonAdapter","priority":20,"key1":"xxx"},//amazon ,key1 appkey
-		{"class":"ChartboostAdapter","priority":40,"key1":"xxx","key2":"xxx"},//chartboost ,key1 appID，key2 signature
-		{"class":"InmobiAdapter","priority":50,"key1":"xxx"},//inmobi ,key1 appid 
-		{"class":"IadAdapter","priority":50,"key1":"appid"},//iad ,will be automatically ignored on android
-		{"class":"MMediaAdapter","priority":50,"key1":"xxx","key2":"xxx"}//mmedia ,key1 banner apID，key2 Interstitial apid
+		{"class":"AdmobAdapter","priority":10,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob  ,key1 banner ID，key2 Interstitial id
+		{"class":"AmazonAdapter","priority":10,"key1":"xxx"},//amazon ,key1 appkey
+		{"class":"ChartboostAdapter","priority":10,"key1":"xxx","key2":"xxx"},//chartboost ,key1 appID，key2 signature
+		{"class":"InmobiAdapter","priority":10,"key1":"xxx"},//inmobi ,key1 appid 
+		{"class":"IadAdapter","priority":10,"key1":"appid"},//iad ,will be automatically ignored on android
+		{"class":"MMediaAdapter","priority":10,"key1":"xxx","key2":"xxx"}//mmedia ,key1 banner apID，key2 Interstitial apid
 		]
 	}
 ```
 Depending rate model priority will become the sort number or proportion.All keyName in config can not been modified."class" can not be modified. "class", said platform implement, types indicates that the platform supports the type of ad.<br/>
 Using the platform of you  choice, delete unused platform. You can also add your own platforms, then config in the list. Create your own advertising platform extensions tutorials will gradually improve later.<br/>
 
-project home：https://github.com/keymobdev/Ad-Network-Mediation-lib-for-android
+project home：https://github.com/keymobdev/keymob   <br/>
 ios project: https://github.com/keymobdev/Keymob-Ad-Lib-for-IOS
