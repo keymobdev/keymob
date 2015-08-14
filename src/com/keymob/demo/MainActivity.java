@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 //		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.TOP_CENTER,0);
 	}
 	private void initKeymobFromKeymobService(){
-		AdManager.setEnableLog(true);
+		
 		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), false);
 	}
 	private void initKeymobFromFile(){

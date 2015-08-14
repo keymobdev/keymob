@@ -12,9 +12,10 @@
 			    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 			    <uses-permission android:name="android.permission.INTERNET"/>
 			    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />		
-			    
+				<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+				<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />		
+				<uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES"/>
+				
 <uses-feature android:name="android.hardware.microphone" android:required="false" />
     <application
         android:allowBackup="true"
@@ -59,6 +60,16 @@ android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|s
  />
 <!-- baidu -->     
 <activity android:name="com.baidu.mobads.AppActivity" android:configChanges="keyboard|keyboardHidden|orientation"/> 
-    </application>
+
+<!-- adcolony -->     
+<activity android:name="com.jirbo.adcolony.AdColonyOverlay" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+<activity android:name="com.jirbo.adcolony.AdColonyFullscreen" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+<activity android:name="com.jirbo.adcolony.AdColonyBrowser" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+<!-- guang dian tong -->     
+<service android:name="com.qq.e.comm.DownloadService" android:exported="false"/>
+<activity android:name="com.qq.e.ads.ADActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
+   
+</application>
 
 </manifest>
