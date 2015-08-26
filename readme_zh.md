@@ -175,6 +175,15 @@ h. 应用墙广告的加载和展示
 	<!-- baidu -->     
 	<activity android:name="com.baidu.mobads.AppActivity" android:configChanges="keyboard|keyboardHidden|orientation"/> 
 
+	<!-- adcolony -->     
+	<activity android:name="com.jirbo.adcolony.AdColonyOverlay" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+	<activity android:name="com.jirbo.adcolony.AdColonyFullscreen" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+	<activity android:name="com.jirbo.adcolony.AdColonyBrowser" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+	<!-- guang dian tong -->     
+	<service android:name="com.qq.e.comm.DownloadService" android:exported="false"/>
+	<activity android:name="com.qq.e.ads.ADActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
+	   
   上面是各个广告平台要求配置的activity，根据自己选择使用的广告平台，添加对应的activity配置到androidmanifest.xml中。
 
 4.广告平台配置文件模板
