@@ -9,17 +9,16 @@ Ad config can been managed in  www.keymob.com ,  modify and adjust easy, you can
 ## Usage
 
 ### 1. Download and install the library files<br/>
-  Download keymob library keymobad.jar,  add it to the library path of android project<br/>
-  Download advertising platform libraries, keymob supports many platforms, but only need to add one default advertising platform library to been used when load ad from remote fail.<br/>
-   The following are the library files of each advertising platform<br/>
-   * admob：AdmobAdapter.jar
-   * amazon:  AmazonAdapter.jar
-   * chartboost: ChartboostAdapter.jar
-   * mmedia：  MMediaAdapter.jar
-   * inmobi:  InmobiAdapter.jar
-   * baidu:  BaiduAdapter.jar
+To show ads on mobile application which needs to add advertisement  library in the application, the current version Keymob  library is 20150801. You can find it is a android demo project , the following resources are Keymob library-related. <br/>
+* libs\keymobad.jar keymob  core libraries<br/>
+* assets\com_keymob_sdks keymob backup platform<br/>
+* assets\biduad_plugin keymob Baidu platform required resource<br/>
+* assets\resources gdt_plugin keymob gdt platform required resource<br/>
+* README.md keymob English quickly integrate document<br/>
+* README_zh.md keymob Chinese quickly integrate document<br/>
 
-<br/>   warning：just need add one platform lib to assets/com_keymob_sdks  .
+<br/>   Note: The three documents in assets directory  can not be modified file name  .<br/>
+AdmobAdapter.jar in com_keymob_sdks   indicates   admob is used as a backup platform when  can not connect Keymob. If you want to switch to other platforms you can download from https://github.com/keymobdev/admob-adapter
 
 ###  2.Add Code
 
@@ -185,10 +184,13 @@ The above code is display standard banner at point(0,200)<br/>
 		"rateModel":1,//0 said priority is  represents the weight of each platform ,1 said the priority is the order of each platform to display ads
 		"platforms":[
 		{"class":"AdmobAdapter","priority":10,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob  ,key1 banner ID，key2 Interstitial id
+		{"class":"BaiduAdapter","priority":10,"key1":"apid","key2":"apsec"},//baidu platform,key1 and key2 is the same value
 		{"class":"AmazonAdapter","priority":10,"key1":"xxx"},//amazon ,key1 appkey
 		{"class":"ChartboostAdapter","priority":10,"key1":"xxx","key2":"xxx"},//chartboost ,key1 appID，key2 signature
 		{"class":"InmobiAdapter","priority":10,"key1":"xxx"},//inmobi ,key1 appid 
 		{"class":"IadAdapter","priority":10,"key1":"appid"},//iad ,will be automatically ignored on android
+		{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},//gdt platform
+		{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},//adcolony platform
 		{"class":"MMediaAdapter","priority":10,"key1":"xxx","key2":"xxx"}//mmedia ,key1 banner apID，key2 Interstitial apid
 		]
 	}
