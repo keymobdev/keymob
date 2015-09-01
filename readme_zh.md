@@ -28,8 +28,8 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
 2.添加 代码
   a.引入代码
 
-	import com.keymob.ads.AdManager;
-	import com.keymob.core.*;
+	import com.keymob.networks.AdManager;
+	import com.keymob.networks.core.*;
 	import com.keymob.sdk.core.AdTypes;
 
     使用keymob前，先import keymob的相关类文件。keymob的大部分核心类在com.keymob.core包中，所以可以一次全部引入。AdManager作为keymob的主要类，也是必须引入的。
@@ -207,3 +207,4 @@ h. 应用墙广告的加载和展示
 priority会根据ratemodel不同而成为比重或者排序号。class表示平台实现，不能随意修改。
 
 项目地址：https://github.com/keymobdev/keymob
+ios project: https://github.com/keymobdev/Keymob-Ad-Lib-for-IOS<br/>

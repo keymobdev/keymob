@@ -24,8 +24,9 @@ AdmobAdapter.jar in com_keymob_sdks   indicates   admob is used as a backup plat
 
 #### a.add import<br/>
 ```
-	import com.keymob.ads.AdManager;
-	import com.keymob.core.*;
+import com.keymob.networks.AdManager;
+import com.keymob.networks.core.*;
+import com.keymob.sdk.core.AdTypes;
 ```
 Before using keymob, first import keymob related class files. Most of the core classes in com.keymob.core package, so you can import all at once. AdManager as the main class of keymob , also need to be imported.<br/>
   
@@ -209,5 +210,5 @@ Depending rate model priority will become the sort number or proportion.All keyN
 Using the platform of you  choice, delete unused platform. You can also add your own platforms, then config in the list. Create your own advertising platform extensions tutorials will gradually improve later.<br/>
 
 project home：https://github.com/keymobdev/keymob   <br/>
-ios project: https://github.com/keymobdev/Keymob-Ad-Lib-for-IOS
+ios project: https://github.com/keymobdev/Keymob-Ad-Lib-for-IOS<br/>
 qq group :310513042
