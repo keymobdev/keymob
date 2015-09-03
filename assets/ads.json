@@ -3,12 +3,14 @@
 "rateModel":1,
 "platforms":[
 {"class":"KeymobAdapter","priority":50,"key1":"1"},
-{"class":"AdmobAdapter","priority":50,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},
-{"class":"AmazonAdapter","priority":50,"key1":"7e5039cf49dfadfeeeeeeeeeeeee"},
-{"class":"ChartboostAdapter","priority":50,"key1":"51bdcf7616ba475450000dfdd","key2":"dafevdafaaaaaaaaaaaaaaefgadfadf"},
-{"class":"InmobiAdapter","priority":50,"key1":"339bf9c07e094fdfa2adafdfffffff3"},
-{"class":"IadAdapter","priority":50,"key1":"9873273"},
-{"class":"BaiduAdapter","priority":50,"key1":"aef7acc9"},
-{"class":"MMediaAdapter","priority":50,"key1":"123743","key2":"123745"}
+{"class":"AdmobAdapter","priority":50,"key1":"ca-app-pub-xxxxx/xxxx","key2":"ca-app-pub-xxx/xxx"},
+{"class":"AmazonAdapter","priority":50,"key1":"amazon ad id"},
+{"class":"ChartboostAdapter","priority":50,"key1":"appid","key2":"sign"},
+{"class":"InmobiAdapter","priority":50,"key1":"ad id"},
+{"class":"IadAdapter","priority":50,"key1":"appid"},
+{"class":"BaiduAdapter","priority":50,"key1":"apid","key2":"apsec"},
+{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},//gdt platform
+{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},//adcolony platform
+{"class":"MMediaAdapter","priority":50,"key1":"banner id","key2":"Interstitial ID"}
 ]
 }
