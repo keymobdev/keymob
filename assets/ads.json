@@ -6,11 +6,11 @@
 {"class":"AdmobAdapter","priority":50,"key1":"ca-app-pub-xxxxx/xxxx","key2":"ca-app-pub-xxx/xxx"},
 {"class":"AmazonAdapter","priority":50,"key1":"amazon ad id"},
 {"class":"ChartboostAdapter","priority":50,"key1":"appid","key2":"sign"},
-{"class":"InmobiAdapter","priority":50,"key1":"ad id"},
+{"class":"InmobiAdapter","priority":50,"key1":"property id","key2":"banner id","key3":"interstitial id"},
 {"class":"IadAdapter","priority":50,"key1":"appid"},
-{"class":"BaiduAdapter","priority":50,"key1":"apid","key2":"apsec"},
-{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},//gdt platform
-{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},//adcolony platform
+{"class":"BaiduAdapter","priority":50,"key1":"appid","key2":"bannerid","param":"Interstitial ID"},
+{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},
+{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},
 {"class":"MMediaAdapter","priority":50,"key1":"banner id","key2":"Interstitial ID"}
 ]
 }
