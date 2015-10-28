@@ -3,6 +3,7 @@ package com.keymob.demo;
 import java.io.InputStream;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,8 +29,9 @@ public class MainActivity extends Activity {
 //		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.TOP_CENTER,0);
 	}
 	private void initKeymobFromKeymobService(){
-		
-		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), false);
+		AdManager.setEnableLog(true);
+		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), true);
+		AdManager.getInstance().loadInterstitial(this);
 	}
 	private void initKeymobFromFile(){
 		 String res=null;
@@ -58,30 +60,32 @@ public class MainActivity extends Activity {
 		if(AdManager.getInstance().isInterstitialReady()){
 			AdManager.getInstance().showInterstitial();
 		}else{
-			AdManager.getInstance().loadInterstitial();
+			AdManager.getInstance().loadInterstitial(this);
 		}
 	}
 	public void clickTop(View view) {
-		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.TOP_CENTER,0);
+		Intent gameIntent=new Intent(this,GameActivity.class);
+		this.startActivity(gameIntent);
+//		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.TOP_CENTER,0);
 	}
 	public void clickBottom(View view) {
-		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.BOTTOM_CENTER,88);
+		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.BOTTOM_CENTER,88,this);
 	}
 	public void clickTop100(View view) {
-		AdManager.getInstance().showBannerABS(BannerSizeType.BANNER, 0, 200);
+		AdManager.getInstance().showBannerABS(BannerSizeType.BANNER, 0, 200,this);
 	}
 	public void clickVideo(View view) {
 		if(AdManager.getInstance().isVideoReady()){
 			AdManager.getInstance().showVideo();
 		}else{
-			AdManager.getInstance().loadVideo();
+			AdManager.getInstance().loadVideo(this);
 		}
 	}
 	public void clickAppWall(View view) {
 		if(AdManager.getInstance().isAppWallReady()){
 			AdManager.getInstance().showAppWall();
 		}else{
-			AdManager.getInstance().loadAppWall();
+			AdManager.getInstance().loadAppWall(this);
 		}
 	}
 	public void hideBanner(View view) {
@@ -121,7 +125,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onOtherEvent(String eventName, int adtype, Object data,
 				PlatformAdapter adapter) {
-			Log.d(TAG, adapter+" onLoadedSuccess for type"+adtype +" withEvent "+eventName);
+			Log.d(TAG, adapter+" onOtherEvent for type"+adtype +" withEvent "+eventName);
 		}
 	}
 }

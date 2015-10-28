@@ -17,7 +17,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="44dp"
         android:onClick="clickTop"
-        android:text="relationTop"  />
+        android:text="new Activity"  />
 
     <Button
         android:id="@+id/button2"
