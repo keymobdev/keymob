@@ -52,7 +52,7 @@ Before using keymob, first import keymob related class files. Most of the core c
 
 #### c. Display banner advertising
 ```
-	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,80);
+	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,80,this);
 ```
     The above means that displays the standard banner ad at the bottom of the device . The first parameter is the ad size, the type size can be selected in BannerSizes constants, including the standard banner, rectange banner, smart banner and so on.<br/>
   Other banner size outside  standard size(320*50) may have  small differences in the different platforms, run to see the effects.<br/>
@@ -61,7 +61,7 @@ Before using keymob, first import keymob related class files. Most of the core c
  
 #### d. display banner at Fixed location
 ```	
-	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200);
+	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200,this);
 ```
 The above code is display standard banner at point(0,200)<br/>
      Although the relative positioning to meet the needs of the majority of advertising location settings, but to meet the needs of some special position, keymob provides absolute fixed position display banner advertising api.<br/>
@@ -75,7 +75,7 @@ The above code is display standard banner at point(0,200)<br/>
     
 #### f. Load and display full-screen ads
 ```
-	AdManager.getInstance().loadInterstitial();
+	AdManager.getInstance().loadInterstitial(this);
 ```
    Load Interstitial ads, does not automatically show after load successfully, this can better control Interstitial ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showInterstitial.<br/>
@@ -95,7 +95,7 @@ The above code is display standard banner at point(0,200)<br/>
 ```
 #### g. Load and display video ads
 ```
-	AdManager.getInstance().loadVideo();
+	AdManager.getInstance().loadVideo(this);
 ```
   Load video ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showVideo.
@@ -115,7 +115,7 @@ The above code is display standard banner at point(0,200)<br/>
 ```
 #### h. Application load and display more app advertising
 ```
-	AdManager.getInstance().loadAppWall();
+	AdManager.getInstance().loadAppWall(this);
 ```
    Load more app ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showAppWall.<br/>
@@ -195,12 +195,12 @@ The above code is display standard banner at point(0,200)<br/>
 		"rateModel":1,//0 said priority is  represents the weight of each platform ,1 said the priority is the order of each platform to display ads
 		"platforms":[
 		{"class":"AdmobAdapter","priority":10,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob  ,key1 banner ID，key2 Interstitial id
-		{"class":"BaiduAdapter","priority":10,"key1":"apid","key2":"banner id","param":"Interstitial id"},//baidu ssp platform,param can been Interstitial id or json string {"interstitialID":"interstitial ID","videoID":" video ID"}
+		{"class":"BaiduAdapter","priority":10,"key1":"apid","key2":"apsec"},//baidu platform,key1 and key2 is the same value
 		{"class":"AmazonAdapter","priority":10,"key1":"xxx"},//amazon ,key1 appkey
 		{"class":"ChartboostAdapter","priority":10,"key1":"xxx","key2":"xxx"},//chartboost ,key1 appID，key2 signature
-		{"class":"InmobiAdapter","priority":10,"key1":"property id","key2":"banner id","param":"Interstitial id"},//inmobi ,key1 appid 
+		{"class":"InmobiAdapter","priority":10,"key1":"xxx"},//inmobi ,key1 appid 
 		{"class":"IadAdapter","priority":10,"key1":"appid"},//iad ,will be automatically ignored on android
-		{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},//gdt platform param  Interstitial id or json string {"interstitialID":"interstitial ID","appWallID":" appWall ID"}
+		{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},//gdt platform
 		{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},//adcolony platform
 		{"class":"MMediaAdapter","priority":10,"key1":"xxx","key2":"xxx"}//mmedia ,key1 banner apID，key2 Interstitial apid
 		]

@@ -55,7 +55,7 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
 
  d. banner广告的展示 
 
-	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,0);
+	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,0,this);
 
     上面的意思是在设备的底部显示显示标准banner广告。第一个参数是广告尺寸，尺寸的种类在BannerSizes中可以选择的常量，包括标准banner，方块，smart banner等。
     标准banner之外的其他banner尺寸根据平台不同有细微的差别，具体效果可以调试查看。
@@ -64,7 +64,7 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
  
  d. 固定位置展示banner
 	
-	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200);
+	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200,this);
 
     上面是在x 0,y 200位置展示标准banner
     虽然相对定位能满足大部分的广告位置设置需求，但为满足某些特殊位置的需要，keymob提供了绝对固定位置展示banner广告的接口。
@@ -78,7 +78,7 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
     
  f. 全屏广告的加载和展示
 
-	AdManager.getInstance().loadInterstitial();
+	AdManager.getInstance().loadInterstitial(this);
 
    加载全屏广告，广告加载成功后不会自动展示，这样能更好的控制全屏广告在合适的时机展示给用户，
    如果要在加载成功时立即展示可以在 eventlistener的 receive事件中调用showInterstitial展示广告。
@@ -98,7 +98,7 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
 
 g. 视频广告的加载和展示
 
-	AdManager.getInstance().loadVideo();
+	AdManager.getInstance().loadVideo(this);
 
    加载视频广告，广告加载成功后不会自动展示，这样能更好的控制视频广告在合适的时机展示给用户，
    如果要在加载成功时立即展示可以在 eventlistener的 receive事件中调用showVideo展示广告。
@@ -118,7 +118,7 @@ g. 视频广告的加载和展示
 
 h. 应用墙广告的加载和展示
 
-	AdManager.getInstance().loadAppWall();
+	AdManager.getInstance().loadAppWall(this);
 
    加载应用墙广告，广告加载成功后不会自动展示，这样能更好的控制应用墙广告在合适的时机展示给用户，
    如果要在加载成功时立即展示可以在 eventlistener的 receive事件中调用showAppWall展示广告。
@@ -192,13 +192,13 @@ h. 应用墙广告的加载和展示
 		"rateModel":1,//广告平台排序规则，0表示priority是权重，各个平台按比例显示广告，1表示priority是顺序，各个平台按顺序展示广告
 		"platforms":[
 		{"class":"AdmobAdapter","priority":90,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob 平台 ,key1 banner ID，key2全屏id
-		{"class":"BaiduAdapter","priority":10,"key1":"appid","key2":"bannerid","param":"Interstitial ID"},//baidu ssp platform,key1 应用id，key2横幅id，param全屏id或者是json字符串{"interstitialID":"interstitial ID","videoID":" video ID"}
+		{"class":"BaiduAdapter","priority":10,"key1":"apid","key2":"apsec"},//baidu platform,key1 和 key2是一样的值
 		{"class":"AmazonAdapter","priority":20,"key1":"xxx"},//amazon 平台 ,key1 appkey
-		{"class":"ChartboostAdapter","priority":40,"key1":"xxx","key2":"xxx"},//chartboost 平台 ,key1 appID，key2 signature 
-		{"class":"InmobiAdapter","priority":50,"key1":"property id","key2":"banner id","key3":"interstitial id"},//inmobi 平台 ,key1 appid 
+		{"class":"ChartboostAdapter","priority":40,"key1":"xxx","key2":"xxx"},//chartboost 平台 ,key1 appID，key2 signature
+		{"class":"InmobiAdapter","priority":50,"key1":"xxx"},//inmobi 平台 ,key1 appid 
 		{"class":"IadAdapter","priority":50},//iad 平台 ,android上会被自动忽略
 		{"class":"KeymobAdapter","priority":50,"key1":"appid"},//keymob.com 自售广告，交叉推广需要
-		{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},//广点通广告配置param Interstitial id or json string {"interstitialID":"interstitial ID","appWallID":" appWall ID"}
+		{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},//广点通广告配置
 		{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},//Adcolony配置
 		{"class":"MMediaAdapter","priority":10,"key1":"xxx","key2":"xxx"}//mmedia 平台 ,key1 banner ID，key2全屏id
 		]
