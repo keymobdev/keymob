@@ -1,16 +1,69 @@
 {
-"isTesting":true,
-"rateModel":1,
-"platforms":[
-{"class":"KeymobAdapter","priority":50,"key1":"1"},
-{"class":"AdmobAdapter","priority":50,"key1":"ca-app-pub-xxxxx/xxxx","key2":"ca-app-pub-xxx/xxx"},
-{"class":"AmazonAdapter","priority":50,"key1":"amazon ad id"},
-{"class":"ChartboostAdapter","priority":50,"key1":"appid","key2":"sign"},
-{"class":"InmobiAdapter","priority":50,"key1":"property id","key2":"banner id","key3":"interstitial id"},
-{"class":"IadAdapter","priority":50,"key1":"appid"},
-{"class":"BaiduAdapter","priority":50,"key1":"appid","key2":"bannerid","param":"Interstitial ID"},
-{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"Interstitial ID"},
-{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},
-{"class":"MMediaAdapter","priority":50,"key1":"banner id","key2":"Interstitial ID"}
-]
+    "rateModel":"0",
+    "isTesting":false,
+    "platforms":[
+        {
+            "key1":"2",
+            "key2":"",
+            "param":"",
+            "class":"KeymobAdapter",
+            "priority":"10"
+        },
+        {
+            "key1":"ca-app-pub-9010304686094680\/1984705253",
+            "key2":"ca-app-pub-9010304686094680\/1984705253",
+            "param":"",
+            "class":"AdmobAdapter",
+            "priority":"50"
+        },
+        {
+            "key1":"a3dce0b8",
+            "key2":"2077725",
+            "param":"{\"interstitialID\":\"2077726\",\"videoID\":\"2077729\"}",
+            "class":"BaiduAdapter",
+            "priority":"40"
+        },
+        {
+            "key1":"7e5039cf5935421c8b5792f598e5ff9f",
+            "key2":"",
+            "param":"",
+            "class":"AmazonAdapter",
+            "priority":"10"
+        },
+        {
+            "key1":"51bfcf7516ba475450000005",
+            "key2":"28c26ae143999b71468de4a7b50eff51ce83fac0",
+            "param":"",
+            "class":"ChartboostAdapter",
+            "priority":"30"
+        },
+        {
+            "key1":"339bf8c07e094fdfa2a227daeb075e83",
+            "key2":"1431967654669703",
+            "param":"1431967654670166",
+            "class":"InmobiAdapter",
+            "priority":"20"
+        },
+        {
+            "key1":"195743",
+            "key2":"195745",
+            "param":"195744",
+            "class":"MMediaAdapter",
+            "priority":"10"
+        },
+        {
+            "key1":"1104305065",
+            "key2":"3020713100155263",
+            "param":"{\"interstitialID\":\"7030704171355254\",\"appWallID\":\"3090713100853287\"}",
+            "class":"GDTAdapter",
+            "priority":"35"
+        },
+        {
+            "key1":"appfe61fbf788142880be",
+            "key2":"vza0014e07fade4273a6",
+            "param":"vz7a8bd2b98f4b461192",
+            "class":"AdcolonyAdapter",
+            "priority":"10"
+        }
+    ]
 }

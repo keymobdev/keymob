@@ -35,10 +35,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game" >
+        </activity>
+        
+        
+        
+	<!-- Admob -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="7327000" />
+            android:value="8115000" />
 
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
@@ -52,17 +59,21 @@
 
         <!-- InMobi -->
         <activity
-            android:name="com.inmobi.androidsdk.IMBrowserActivity"
+            android:name="com.inmobi.rendering.InMobiAdActivity"
             android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
             android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            />
 
         <!-- Millennial Media -->
         <activity
-            android:name="com.millennialmedia.android.MMActivity"
-            android:configChanges="keyboardHidden|orientation|keyboard|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
+            android:name="com.millennialmedia.internal.MMActivity"
+            
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.millennialmedia.internal.MMIntentWrapperActivity"
+            android:label="sdk" />
+        
 
         <!-- Keymob -->
         <activity
@@ -92,14 +103,20 @@
         <service
             android:name="com.qq.e.comm.DownloadService"
             android:exported="false" />
-
-        <activity
+            <activity
             android:name="com.qq.e.ads.ADActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name=".GameActivity"
-            android:label="@string/title_activity_game" >
-        </activity>
+
+        <!-- chartboost -->
+        	<activity android:name="com.chartboost.sdk.CBImpressionActivity"
+            	   android:excludeFromRecents="true"
+                   android:hardwareAccelerated="true"
+            	   android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+                   android:configChanges="keyboardHidden|orientation|screenSize"/>
+        
+        
+            
+        
     </application>
 
 </manifest>

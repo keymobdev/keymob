@@ -1,0 +1,16 @@
+{
+"isTesting":true,
+"rateModel":1,
+"platforms":[
+{"class":"KeymobAdapter","priority":50,"key1":"1"},
+{"class":"AdmobAdapter","priority":50,"key1":"ca-app-pub-xxxxx/xxxx","key2":"ca-app-pub-xxx/xxx"},
+{"class":"AmazonAdapter","priority":50,"key1":"amazon ad id"},
+{"class":"ChartboostAdapter","priority":50,"key1":"appid","key2":"sign"},
+{"class":"InmobiAdapter","priority":50,"key1":"property id","key2":"banner id","key3":"interstitial id"},
+{"class":"IadAdapter","priority":50,"key1":"appid"},
+{"class":"BaiduAdapter","priority":50,"key1":"appid","key2":"bannerid","param":"{\"interstitialID\":\"interstitial ID\",\"videoID\":\"video ID\"}"},
+{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id","param":"{\"interstitialID\":\"interstitial ID\",\"appWallID\":\"app Wall ID\"}"},
+{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},
+{"class":"MMediaAdapter","priority":50,"key1":"banner id","key2":"Interstitial ID"}
+]
+}

@@ -26,10 +26,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 //		initKeymobFromFile();
 		initKeymobFromKeymobService();
-//		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.TOP_CENTER,0);
 	}
 	private void initKeymobFromKeymobService(){
 		AdManager.setEnableLog(true);
+		
+		
+
 		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), true);
 		AdManager.getInstance().loadInterstitial(this);
 	}
@@ -66,7 +68,6 @@ public class MainActivity extends Activity {
 	public void clickTop(View view) {
 		Intent gameIntent=new Intent(this,GameActivity.class);
 		this.startActivity(gameIntent);
-//		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.TOP_CENTER,0);
 	}
 	public void clickBottom(View view) {
 		AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.BOTTOM_CENTER,88,this);
@@ -91,7 +92,7 @@ public class MainActivity extends Activity {
 	public void hideBanner(View view) {
 		AdManager.getInstance().removeBanner();
 	}
-	
+
 	class AdEventListener implements IAdEventListener {
 		@Override
 		public void onLoadedSuccess(int arg0, Object arg1,
