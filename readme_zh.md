@@ -55,16 +55,16 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
 
  d. banner广告的展示 
 
-	AdManager.getInstance().showRelationBanner(BannerSizes.BANNER, BannerPositions.BOTTOM_CENTER,0,this);
+	AdManager.getInstance().showRelationBanner(BannerSizeType.BANNER, BannerPositions.BOTTOM_CENTER,0,this);
 
-    上面的意思是在设备的底部显示显示标准banner广告。第一个参数是广告尺寸，尺寸的种类在BannerSizes中可以选择的常量，包括标准banner，方块，smart banner等。
+    上面的意思是在设备的底部显示显示标准banner广告。第一个参数是广告尺寸，尺寸的种类在BannerSizeType中可以选择的常量，包括标准banner，方块，smart banner等。
     标准banner之外的其他banner尺寸根据平台不同有细微的差别，具体效果可以调试查看。
     第二个参数是广告条展示的位置，包括顶端靠左，顶端居中，顶端靠右等等9种常见位置，各个位置的值在BannerPositions的常量中，方便使用。
     第三个参数是offsetY，即相对位置偏移，例如放在应用的底端，向上偏移0个像素，就是上面的代码效果。如果要贴到应用最底端上移60，则偏移为60.
  
  d. 固定位置展示banner
 	
-	AdManager.getInstance().showBannerABS(BannerSizes.BANNER, 0, 200,this);
+	AdManager.getInstance().showBannerABS(BannerSizeType.BANNER, 0, 200,this);
 
     上面是在x 0,y 200位置展示标准banner
     虽然相对定位能满足大部分的广告位置设置需求，但为满足某些特殊位置的需要，keymob提供了绝对固定位置展示banner广告的接口。
