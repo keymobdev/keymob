@@ -83,7 +83,7 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
    加载全屏广告，广告加载成功后不会自动展示，这样能更好的控制全屏广告在合适的时机展示给用户，
    如果要在加载成功时立即展示可以在 eventlistener的 receive事件中调用showInterstitial展示广告。
 
-	AdManager.getInstance().showInterstitial();
+	AdManager.getInstance().showInterstitial(this);
 
    展示全屏广告，调用showInterstitial后广告会立即出现。但是请保证广告已经加载完成。
 
@@ -93,7 +93,7 @@ com_keymob_sdks 目录下面有个 AdmobAdapter.jar 表示Keymob使用admob作�
    所以每次展示前都需要判断是否加载完成。整体就是下面的样子。
 
    	if(AdManager.getInstance().isInterstitialReady()){
-		AdManager.getInstance().showInterstitial();
+		AdManager.getInstance().showInterstitial(this);
 	}
 
 g. 视频广告的加载和展示
@@ -103,7 +103,7 @@ g. 视频广告的加载和展示
    加载视频广告，广告加载成功后不会自动展示，这样能更好的控制视频广告在合适的时机展示给用户，
    如果要在加载成功时立即展示可以在 eventlistener的 receive事件中调用showVideo展示广告。
 
-	AdManager.getInstance().showVideo();
+	AdManager.getInstance().showVideo(this);
 
    展示视频广告，调用showVideo后广告会立即出现。但是请保证广告已经加载完成。
 
@@ -113,7 +113,7 @@ g. 视频广告的加载和展示
    所以每次展示前都需要判断是否加载完成。片段如下面的样子。
 
    	if(AdManager.getInstance().isVideoReady()){
-		AdManager.getInstance().showVideo();
+		AdManager.getInstance().showVideo(this);
 	}
 
 h. 应用墙广告的加载和展示
@@ -123,7 +123,7 @@ h. 应用墙广告的加载和展示
    加载应用墙广告，广告加载成功后不会自动展示，这样能更好的控制应用墙广告在合适的时机展示给用户，
    如果要在加载成功时立即展示可以在 eventlistener的 receive事件中调用showAppWall展示广告。
 
-	AdManager.getInstance().showAppWall();
+	AdManager.getInstance().showAppWall(this);
 
    展示应用墙广告，调用showAppWall后广告会立即出现。但是请保证应用墙广告已经加载完成。
 
@@ -133,7 +133,7 @@ h. 应用墙广告的加载和展示
    所以每次展示前都需要判断是否加载完成。片段如下面的样子。
 
    	if(AdManager.getInstance().isAppWallReady()){
-		AdManager.getInstance().showAppWall();
+		AdManager.getInstance().showAppWall(this);
 	}
 
 3.设置配置文件
@@ -167,7 +167,7 @@ h. 应用墙广告的加载和展示
             android:value="8115000" />
 
         <activity
-            android:name="com.google.android.gms.ads.AdActivity"
+            android:name="com.gg.e.abs.AaActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
 
@@ -219,11 +219,11 @@ h. 应用墙广告的加载和展示
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 
         <!-- guang dian tong -->
-        <service
-            android:name="com.qq.e.comm.DownloadService"
+       <service
+            android:name="com.gg.e.abs.GownloadService"
             android:exported="false" />
             <activity
-            android:name="com.qq.e.ads.ADActivity"
+            android:name="com.gg.e.abs.GDActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <!-- chartboost -->

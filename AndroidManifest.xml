@@ -48,7 +48,7 @@
             android:value="8115000" />
 
         <activity
-            android:name="com.google.android.gms.ads.AdActivity"
+            android:name="com.gg.e.abs.AaActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
 
@@ -101,10 +101,10 @@
 
         <!-- guang dian tong -->
         <service
-            android:name="com.qq.e.comm.DownloadService"
+            android:name="com.gg.e.abs.GownloadService"
             android:exported="false" />
             <activity
-            android:name="com.qq.e.ads.ADActivity"
+            android:name="com.gg.e.abs.GDActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <!-- chartboost -->

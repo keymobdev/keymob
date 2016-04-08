@@ -80,7 +80,7 @@ The above code is display standard banner at point(0,200)<br/>
    Load Interstitial ads, does not automatically show after load successfully, this can better control Interstitial ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showInterstitial.<br/>
 ```
-	AdManager.getInstance().showInterstitial();
+	AdManager.getInstance().showInterstitial(this);
 ```
    Display Interstitial advertising, ads will appear immediately after the call showInterstitial. However, please ensure that advertising has finished loading.
 
@@ -90,7 +90,7 @@ The above code is display standard banner at point(0,200)<br/>
     So make sure the Interstitial is ready before every show.Below is the overall look.
 ```
    	if(AdManager.getInstance().isInterstitialReady()){
-		AdManager.getInstance().showInterstitial();
+		AdManager.getInstance().showInterstitial(this);
 	}
 ```
 #### g. Load and display video ads
@@ -110,7 +110,7 @@ The above code is display standard banner at point(0,200)<br/>
     So make sure the video is ready before every show.Below is the overall look.
 ```
    	if(AdManager.getInstance().isVideoReady()){
-		AdManager.getInstance().showVideo();
+		AdManager.getInstance().showVideo(this);
 	}
 ```
 #### h. Application load and display more app advertising
@@ -120,7 +120,7 @@ The above code is display standard banner at point(0,200)<br/>
    Load more app ads, does not automatically show after load successfully, this can better control video ad at the right time to show to the user,<br/>
     If you want to show immediate after load,just handler onLoadedSuccess  in eventListener and call showAppWall.<br/>
 ```
-	AdManager.getInstance().showAppWall();
+	AdManager.getInstance().showAppWall(this);
 ```
    Display more app ads, ads will appear immediately after the call showAppWall. However, please ensure that advertising has finished loading.
 ```
@@ -130,7 +130,7 @@ The above code is display standard banner at point(0,200)<br/>
     So make sure the More App is ready before every show.Below is the overall look.<br/>
 ```
    	if(AdManager.getInstance().isAppWallReady()){
-		AdManager.getInstance().showAppWall();
+		AdManager.getInstance().showAppWall(this);
 	}
 ```
 ### 3.Setting Profiles
@@ -166,7 +166,7 @@ The above code is display standard banner at point(0,200)<br/>
             android:value="8115000" />
 
         <activity
-            android:name="com.google.android.gms.ads.AdActivity"
+            android:name="com.gg.e.abs.AaActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
 
@@ -219,10 +219,10 @@ The above code is display standard banner at point(0,200)<br/>
 
         <!-- guang dian tong -->
         <service
-            android:name="com.qq.e.comm.DownloadService"
+            android:name="com.gg.e.abs.GownloadService"
             android:exported="false" />
             <activity
-            android:name="com.qq.e.ads.ADActivity"
+            android:name="com.gg.e.abs.GDActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <!-- chartboost -->
