@@ -136,6 +136,14 @@ h. 应用墙广告的加载和展示
 		AdManager.getInstance().showAppWall(this);
 	}
 
+i. 对于国内平台的特殊处理，一些平台检查assets下的百度和广点通文件夹，为了使用了百度和广点通平台又想顺利通过审核的进行如下处理
+    将__pasys_remote_banner.jar和gdtadv2.jar复制到assets目录并重命名，并在初始化之前加上俩行代码
+    例如把百度的__pasys_remote_banner.jar改名为bdsamename.jpng，广点通文件gdtadv2.jar 更名成gggxxx.jj，则是如下处理
+
+	AdManager.getInstance().pluginFile.put("qq", "gggxxx.jj");
+	AdManager.getInstance().pluginFile.put("baidu", "bdsamename.jpng");
+	AdManager.getInstance().initFromKeymobService(this, "1", new AdEventListener(), false);
+
 3.设置配置文件
 
   a.配置权限

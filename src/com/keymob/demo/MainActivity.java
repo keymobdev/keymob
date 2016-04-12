@@ -30,7 +30,6 @@ public class MainActivity extends Activity {
 	private void initKeymobFromKeymobService(){
 		AdManager.setEnableLog(true);
 		
-		
 
 		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), true);
 		AdManager.getInstance().loadInterstitial(this);
