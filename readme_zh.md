@@ -10,10 +10,10 @@ keymob 是一个简单易用的广告管理库。
 使用方法
 
 1.下载安装库文件
-要在手机应用里面展示广告需要在应用里面添加广告管理库，Keymob广告管理库目前的版本是20150801 下载解压后可以看到android工程的目录结构，大部分常规的android工程文件和目录，下面资源是Keymob管理库相关的。<br/> 
+要在手机应用里面展示广告需要在应用里面添加广告管理库，Keymob广告管理库目前的版本是20170201 下载解压后可以看到android工程的目录结构，大部分常规的android工程文件和目录，下面资源是Keymob管理库相关的。<br/> 
 libs\keymobad.jar keymob 广告管理核心库
 assets\com_keymob_sdks keymob 备用平台
-assets\biduad_plugin keymob 百度平台需要的资源
+assets\bdxadsdk.jar keymob 百度平台需要的资源
 assets\gdt_plugin keymob 广点通平台需要的资源
 README.md keymob 英文快速集成文档
 README_zh.md keymob 中文快速集成文档
@@ -140,8 +140,7 @@ i. 对于国内平台的特殊处理，一些平台检查assets下的百度和�
     将__pasys_remote_banner.jar和gdtadv2.jar复制到assets目录并重命名，并在初始化之前加上俩行代码
     例如把百度的__pasys_remote_banner.jar改名为bdsamename.jpng，广点通文件gdtadv2.jar 更名成gggxxx.jj，则是如下处理
 
-	AdManager.getInstance().pluginFile.put("qq", "gggxxx.jj");
-	AdManager.getInstance().pluginFile.put("baidu", "bdsamename.jpng");
+
 	AdManager.getInstance().initFromKeymobService(this, "1", new AdEventListener(), false);
 
 3.设置配置文件
@@ -172,17 +171,14 @@ i. 对于国内平台的特殊处理，一些平台检查assets下的百度和�
 	<!-- Admob -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="8115000" />
+            android:value="10084000" />
 
         <activity
             android:name="com.gg.e.abs.AaActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
 
-        <!-- Amazon Mobile Ads -->
-        <activity
-            android:name="com.amazon.device.ads.AdActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+       
 
         <!-- InMobi -->
         <activity
@@ -191,15 +187,13 @@ i. 对于国内平台的特殊处理，一些平台检查assets下的百度和�
             android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             />
+        <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="com.inmobi.share.id" />
+            </intent-filter>
+        </receiver>
 
-        <!-- Millennial Media -->
-        <activity
-            android:name="com.millennialmedia.internal.MMActivity"
-            
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name="com.millennialmedia.internal.MMIntentWrapperActivity"
-            android:label="sdk" />
+       
         
 
         <!-- Keymob -->
@@ -212,22 +206,10 @@ i. 对于国内平台的特殊处理，一些平台检查assets下的百度和�
             android:name="com.baidu.mobads.AppActivity"
             android:configChanges="keyboard|keyboardHidden|orientation" />
 
-        <!-- adcolony -->
-        <activity
-            android:name="com.jirbo.adcolony.AdColonyOverlay"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.jirbo.adcolony.AdColonyFullscreen"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.jirbo.adcolony.AdColonyBrowser"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+       
 
         <!-- guang dian tong -->
-       <service
+        <service
             android:name="com.gg.e.abs.GownloadService"
             android:exported="false" />
             <activity
@@ -250,13 +232,12 @@ i. 对于国内平台的特殊处理，一些平台检查assets下的百度和�
 		"platforms":[
 		{"class":"AdmobAdapter","priority":10,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob  ,key1 banner ID，key2 Interstitial id
 		{"class":"BaiduAdapter","priority":10,"key1":"apid","key2":"banner id","param":"{\"interstitialID\":\"interstitial ID\",\"videoID\":\"video ID\"}"},//baidu platform,param is a json string.remove video ID key value for ios
-		{"class":"AmazonAdapter","priority":10,"key1":"xxx"},//amazon ,key1 appkey
+	
 		{"class":"ChartboostAdapter","priority":10,"key1":"xxx","key2":"xxx"},//chartboost ,key1 appID，key2 signature
 		{"class":"InmobiAdapter","priority":10,"key1":"xxx","key2":"","param":" interstitial placement"},//inmobi ,key1 appid ,key2 banner placement,param interstitial placement
-		{"class":"IadAdapter","priority":10,"key1":"appid"},//iad ,will be automatically ignored on android
+	
 		{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id", "param":"{\"interstitialID\":\"interstitial ID\",\"appWallID\":\"app Wall ID\"}"},//gdt platform
-		{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},//adcolony platform
-		{"class":"MMediaAdapter","priority":10,"key1":"xxx","key2":"xxx"}//mmedia ,key1 banner apID，key2 Interstitial apid
+	
 		]
 	}
 

@@ -12,9 +12,7 @@ import com.keymob.networks.AdManager;
 import com.keymob.networks.core.BannerPositions;
 import com.keymob.networks.core.BannerSizeType;
 import com.keymob.networks.core.IAdEventListener;
-import com.keymob.networks.core.IInterstitialPlatform;
 import com.keymob.networks.core.PlatformAdapter;
-import com.keymob.sdk.core.AdTypes;
 
 
 public class MainActivity extends Activity {
@@ -26,12 +24,17 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 //		initKeymobFromFile();
 		initKeymobFromKeymobService();
+		
 	}
 	private void initKeymobFromKeymobService(){
 		AdManager.setEnableLog(true);
-		
-
+//		AdManager.getInstance().wsetWebRoot("http://192.168.0.105/");
+		AdManager.useLiberay=true;
+		AdManager.setEnableLog(true);
+		AdManager.getInstance().pluginFile.put("qq", "qq.jpng");//keymob sdk adapter file chang .jar to .pl
+		AdManager.getInstance().pluginFile.put("baidu", "baidu.jpng");
 		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), true);
+//		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), true);
 		AdManager.getInstance().loadInterstitial(this);
 	}
 	private void initKeymobFromFile(){
@@ -59,7 +62,7 @@ public class MainActivity extends Activity {
 	
 	public void clickInterstitial(View view) {
 		if(AdManager.getInstance().isInterstitialReady()){
-			AdManager.getInstance().showInterstitial();
+			AdManager.getInstance().showInterstitial(this);
 		}else{
 			AdManager.getInstance().loadInterstitial(this);
 		}
@@ -76,14 +79,14 @@ public class MainActivity extends Activity {
 	}
 	public void clickVideo(View view) {
 		if(AdManager.getInstance().isVideoReady()){
-			AdManager.getInstance().showVideo();
+			AdManager.getInstance().showVideo(this);
 		}else{
 			AdManager.getInstance().loadVideo(this);
 		}
 	}
 	public void clickAppWall(View view) {
 		if(AdManager.getInstance().isAppWallReady()){
-			AdManager.getInstance().showAppWall();
+			AdManager.getInstance().showAppWall(this);
 		}else{
 			AdManager.getInstance().loadAppWall(this);
 		}
@@ -97,9 +100,9 @@ public class MainActivity extends Activity {
 		public void onLoadedSuccess(int arg0, Object arg1,
 				PlatformAdapter arg2) {
 			Log.d(TAG, arg2+" onLoadedSuccess for type "+arg0 +" withdata "+arg1);
-			if(arg0==AdTypes.INTERSTITIAL){
-				((IInterstitialPlatform)arg2).showInterstitial(); 
-			}
+//			if(arg0==AdTypes.INTERSTITIAL){
+//				((IInterstitialPlatform)arg2).showInterstitial(); 
+//			}
 		}
 
 		@Override

@@ -43,19 +43,37 @@
         
         
 	<!-- Admob -->
-        <meta-data
+	<!--
+	 <meta-data
             android:name="com.google.android.gms.version"
-            android:value="8115000" />
-
-        <activity
+            android:value="4452000" />
+ 
+      
+ <activity
             android:name="com.gg.e.abs.AaActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
-
-        <!-- Amazon Mobile Ads -->
+ -->
+  		 <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="10084000" />
+   
+  		 <!-- admob -->
+   		<!-- 
         <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+         -->
+             <activity
+            android:name="com.gg.e.abs.AaActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+ 
+        <!-- Amazon Mobile Ads -->
+      <!--   <activity
             android:name="com.amazon.device.ads.AdActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize" /> -->
 
         <!-- InMobi -->
         <activity
@@ -64,15 +82,20 @@
             android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             />
+        <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="com.inmobi.share.id" />
+            </intent-filter>
+        </receiver>
 
         <!-- Millennial Media -->
-        <activity
+      <!--   <activity
             android:name="com.millennialmedia.internal.MMActivity"
             
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.millennialmedia.internal.MMIntentWrapperActivity"
-            android:label="sdk" />
+            android:label="sdk" /> -->
         
 
         <!-- Keymob -->
@@ -86,7 +109,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation" />
 
         <!-- adcolony -->
-        <activity
+      <!--   <activity
             android:name="com.jirbo.adcolony.AdColonyOverlay"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
@@ -97,25 +120,30 @@
         <activity
             android:name="com.jirbo.adcolony.AdColonyBrowser"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" /> -->
 
-        <!-- guang dian tong -->
+        <!-- gdt -->
+      
+ 		  <!--  
         <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" />
+            <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+-->
+  		<service
             android:name="com.gg.e.abs.GownloadService"
             android:exported="false" />
             <activity
             android:name="com.gg.e.abs.GDActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-
         <!-- chartboost -->
         	<activity android:name="com.chartboost.sdk.CBImpressionActivity"
             	   android:excludeFromRecents="true"
                    android:hardwareAccelerated="true"
             	   android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
                    android:configChanges="keyboardHidden|orientation|screenSize"/>
-        
-        
-            
         
     </application>
 

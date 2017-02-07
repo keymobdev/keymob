@@ -9,11 +9,11 @@ Ad config can been managed in  www.keymob.com ,  modify and adjust easy, you can
 ## Usage
 
 ### 1. Download and install the library files<br/>
-To show ads on mobile application which needs to add advertisement  library in the application, the current version Keymob  library is 20150801. You can find it is a android demo project , the following resources are Keymob library-related. <br/>
+To show ads on mobile application which needs to add advertisement  library in the application, the current version Keymob  library is 20170201. You can find it is a android demo project , the following resources are Keymob library-related. <br/>
 * libs\keymobad.jar keymob  core libraries<br/>
 * assets\com_keymob_sdks keymob backup platform<br/>
-* assets\biduad_plugin keymob Baidu platform required resource<br/>
-* assets\resources gdt_plugin keymob gdt platform required resource<br/>
+* assets\bdxadsdk.jar keymob Baidu platform required resource<br/>
+* assets\gdt_plugin gdt_plugin keymob gdt platform required resource<br/>
 * README.md keymob English quickly integrate document<br/>
 * README_zh.md keymob Chinese quickly integrate document<br/>
 
@@ -163,17 +163,14 @@ The above code is display standard banner at point(0,200)<br/>
 	<!-- Admob -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="8115000" />
+            android:value="10084000" />
 
         <activity
             android:name="com.gg.e.abs.AaActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
 
-        <!-- Amazon Mobile Ads -->
-        <activity
-            android:name="com.amazon.device.ads.AdActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+       
 
         <!-- InMobi -->
         <activity
@@ -182,15 +179,13 @@ The above code is display standard banner at point(0,200)<br/>
             android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             />
+        <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="com.inmobi.share.id" />
+            </intent-filter>
+        </receiver>
 
-        <!-- Millennial Media -->
-        <activity
-            android:name="com.millennialmedia.internal.MMActivity"
-            
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name="com.millennialmedia.internal.MMIntentWrapperActivity"
-            android:label="sdk" />
+       
         
 
         <!-- Keymob -->
@@ -203,19 +198,7 @@ The above code is display standard banner at point(0,200)<br/>
             android:name="com.baidu.mobads.AppActivity"
             android:configChanges="keyboard|keyboardHidden|orientation" />
 
-        <!-- adcolony -->
-        <activity
-            android:name="com.jirbo.adcolony.AdColonyOverlay"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.jirbo.adcolony.AdColonyFullscreen"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.jirbo.adcolony.AdColonyBrowser"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+       
 
         <!-- guang dian tong -->
         <service
@@ -245,13 +228,12 @@ The above code is display standard banner at point(0,200)<br/>
 		"platforms":[
 		{"class":"AdmobAdapter","priority":10,"key1":"ca-app-pub-xxx/xxx","key2":"ca-app-pub-xxx/xxx"},//admob  ,key1 banner ID，key2 Interstitial id
 		{"class":"BaiduAdapter","priority":10,"key1":"apid","key2":"banner id","param":"{\"interstitialID\":\"interstitial ID\",\"videoID\":\"video ID\"}"},//baidu platform,param is a json string.remove video ID key value for ios
-		{"class":"AmazonAdapter","priority":10,"key1":"xxx"},//amazon ,key1 appkey
+	
 		{"class":"ChartboostAdapter","priority":10,"key1":"xxx","key2":"xxx"},//chartboost ,key1 appID，key2 signature
 		{"class":"InmobiAdapter","priority":10,"key1":"xxx","key2":"","param":" interstitial placement"},//inmobi ,key1 appid ,key2 banner placement,param interstitial placement
-		{"class":"IadAdapter","priority":10,"key1":"appid"},//iad ,will be automatically ignored on android
+	
 		{"class":"GDTAdapter","priority":10,"key1":"appid","key2":"banner id", "param":"{\"interstitialID\":\"interstitial ID\",\"appWallID\":\"app Wall ID\"}"},//gdt platform
-		{"class":"AdcolonyAdapter","priority":10,"key1":"appid","key2":"zone interstitia","param":"video zone"},//adcolony platform
-		{"class":"MMediaAdapter","priority":10,"key1":"banner id","key2":"Interstitial id"}//mmedia ,key1 banner apID，key2 Interstitial apid
+	
 		]
 	}
 ```

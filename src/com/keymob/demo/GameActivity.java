@@ -20,7 +20,7 @@ public class GameActivity extends Activity {
 	}
 	public void clickTopFull(View view) {
 		if(AdManager.getInstance().isInterstitialReady()){
-			AdManager.getInstance().showInterstitial();
+			AdManager.getInstance().showInterstitial(this);
 		}else{
 			AdManager.getInstance().loadInterstitial(this);
 		}
