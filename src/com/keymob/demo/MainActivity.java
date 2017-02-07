@@ -28,11 +28,7 @@ public class MainActivity extends Activity {
 	}
 	private void initKeymobFromKeymobService(){
 		AdManager.setEnableLog(true);
-//		AdManager.getInstance().wsetWebRoot("http://192.168.0.105/");
-		AdManager.useLiberay=true;
-		AdManager.setEnableLog(true);
-		AdManager.getInstance().pluginFile.put("qq", "qq.jpng");//keymob sdk adapter file chang .jar to .pl
-		AdManager.getInstance().pluginFile.put("baidu", "baidu.jpng");
+		
 		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), true);
 //		AdManager.getInstance().initFromKeymobService(this, "2", new AdEventListener(), true);
 		AdManager.getInstance().loadInterstitial(this);
